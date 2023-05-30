@@ -10,8 +10,10 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with(['type', 'technologies']);
+        //faccio query che chiama da tabella projects tutti i record incluse le relazioni
+        $projects = Project::with(['type', 'technologies'])->get(); //all();
 
+        //ritorno un json perché é un api
         return response()->json([
             'success' => true,
             'results' => $projects

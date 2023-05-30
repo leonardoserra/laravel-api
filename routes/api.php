@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 //rotta che come prefisso avrà sempre /api
-Route::get('/', [ProjectController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index']);
