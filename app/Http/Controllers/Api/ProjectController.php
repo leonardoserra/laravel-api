@@ -23,9 +23,17 @@ class ProjectController extends Controller
     public function show($slug)
     {
         $project = Project::where('slug', $slug)->with(['type', 'technologies'])->first();
-        return response()->json([
-            'success' => true,
-            'results' => $project
-        ]);
+
+        if ($project) {
+            return response()->json([
+                'success' => true,
+                'results' => $project
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'error' => 'Errore 404. La pagina richiesta non è presente'
+            ]);
+        }
     }
 }
