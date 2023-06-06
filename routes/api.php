@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\ProjectController;
+// use App\Http\Controllers\Api\LeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //rotta che come prefisso avrà sempre /api
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/project/{slug}', [ProjectController::class, 'show']);
+
+// Route::post('/contacts', [LeadController::class, 'store']);

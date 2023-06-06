@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewContact;
 use App\Models\Lead;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class LeadController extends Controller
@@ -16,5 +18,7 @@ class LeadController extends Controller
 
         $newLead->fill($data);
         $newLead->save();
+
+        Mail::to('leonius92@gmail.com')->send(new NewContact($newLead));
     }
 }
